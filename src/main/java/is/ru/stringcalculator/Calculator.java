@@ -27,11 +27,11 @@ public class Calculator {
 		System.out.println("temp is " + s);
 	    }
 	    int bracketCount = temp[1].length() - ( temp[1].replace("[","").length());
-	    //temp[1] = escapeChars(temp[1]);
+
 	    System.out.println("brackets are " + bracketCount);
 	    delim = temp[1];
 	    System.out.println("delim is: " + delim);	    
-	    //System.out.println("delim is" + delim);
+
 	    
 	    String tmpSubstring = substring[1];
 	    for (int i=0; i<bracketCount; i++){
