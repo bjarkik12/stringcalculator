@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 public class Calculator {
 
     private static final String defaultdelim = ",|\n";
-    //   private static String[] illchars = "";
     private static ArrayList<String> illchars = new ArrayList<String>();
 
     public static int add(String text){
