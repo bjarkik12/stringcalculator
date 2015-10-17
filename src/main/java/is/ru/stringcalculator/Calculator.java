@@ -18,7 +18,7 @@ public class Calculator {
 	}
 
 	else if( text.indexOf("//") == 0 ){
-	    String delim = "";
+	    String delim = ",";
 	    String[] substring = text.split("\n");
 	    for (String s : substring){
 		System.out.println("Substring is " + s);
@@ -27,14 +27,27 @@ public class Calculator {
 	    for (String s : temp){
 		System.out.println("temp is " + s);
 	    }
+	    int bracketCount = temp[1].length() - ( temp[1].replace("[","").length());
 	    temp[1] = escapeChars(temp[1]);
-       
+	    System.out.println("brackets are " + bracketCount);
 	    delim = temp[1];
-	    //delim = delim.replace("\\","");
-	    System.out.println("delim is" + delim);
+	    System.out.println("delim is: " + delim);	    
+	    //System.out.println("delim is" + delim);
+	    
+	    String tmpSubstring = substring[1];
+	    for (int i=0; i<bracketCount; i++){
+		int endPos = delim.indexOf("]");
+		String currentDelim = delim.substring(1,endPos);
+		tmpSubstring = tmpSubstring.substring(endPos+1,tmpSubstring.length());
+		substring[1] = substring[1].replace(currentDelim, ",");
+	    }
+	    System.out.println("Substring is now" + substring[1]);
 	    substring[1] = escapeChars(substring[1]);
-	    return sum(splitNumbers(substring[1],delim));
-	}
+	    int total = 0;
+	    return sum(splitNumbers(substring[1],","));
+	    
+	}	
+    
 
 	else if(text.contains(",")){
 	    return sum(splitNumbers(text,defaultdelim));
