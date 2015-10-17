@@ -48,12 +48,7 @@ public class CalculatorTest {
     public void testNewDelimiter(){
 	assertEquals(3, Calculator.add("//;\n1;2"));
     }
-    /* 
-    @Test
-    public void testNewDelimiterStar(){
-	assertEquals(10, Calculator.add("//*\n1*2*3*4"));
-    }
-    */
+         
     @Test
     public void testNegatives() {
 	try {
