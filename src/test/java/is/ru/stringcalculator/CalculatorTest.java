@@ -1,7 +1,12 @@
 package is.ru.stringcalculator;
-
+import static org.hamcrest.MatcherAssert.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Test;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
+
+//import org.junit.*;
 
 public class CalculatorTest {
 
@@ -10,17 +15,17 @@ public class CalculatorTest {
     }
     
     @Test
-    public void testEmptyString() {
+    public void testEmptyString(){
 	assertEquals(0, Calculator.add(""));
     }
     
     @Test
-    public void testOneNumber() {
+    public void testOneNumber(){
 	assertEquals(1, Calculator.add("1"));
     }
     
     @Test
-    public void testTwoNumbers() {
+    public void testTwoNumbers(){
 	assertEquals(3, Calculator.add("1,2"));
     }	
 
@@ -44,5 +49,17 @@ public class CalculatorTest {
 	assertEquals(3, Calculator.add("//;\n1;2"));
     }
     
-
+    @Test
+    public void testExpectedException3() {
+	try {
+	    Calculator.add("2,-4,3,-5,-6");
+	    fail("Exception expected.");
+	}
+ 
+	catch (RuntimeException ex) {
+	    assertEquals("Negatives not allowed: -4,-5,-6", ex.getMessage());
+	}
+    
+    }
+    
 }

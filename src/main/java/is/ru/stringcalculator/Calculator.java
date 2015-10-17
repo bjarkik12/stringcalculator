@@ -1,4 +1,5 @@
 package is.ru.stringcalculator;
+import java.util.*;
 
 public class Calculator {
 
@@ -37,9 +38,32 @@ public class Calculator {
       
     private static int sum(String[] numbers){
 	int total = 0;
-        for(String number : numbers){
-	    total += toInt(number);
+
+	ArrayList<String> negnumbers = new ArrayList<String>();
+	for(String number : numbers){
+	    int temp = toInt(number);
+	    if ( temp < 0){
+		negnumbers.add(number);
+	    }
+	    else{
+		total += temp;
+	    }
 	}
+	if (!(negnumbers.isEmpty())){
+	    String errorMessage = "Negatives not allowed: ";
+	    boolean first = true;
+	    for (String s : negnumbers){
+		if (first){
+		    errorMessage += s;
+		    first = false;
+		}
+		else{
+		    errorMessage += "," + s;
+		}
+	    }
+	    throw new RuntimeException(errorMessage);
+	}
+
 	return total;
     }
 
