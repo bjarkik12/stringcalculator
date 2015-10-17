@@ -37,8 +37,9 @@ public class Calculator {
 	    for (int i=0; i<bracketCount; i++){
 		int endPos = delim.indexOf("]");
 		String currentDelim = delim.substring(1,endPos);
-		System.out.println("Current Delim: " + currentDelim);
-		tmpSubstring = tmpSubstring.substring(endPos+1,tmpSubstring.length());
+		System.out.println("CurrentDelim: " + currentDelim);
+		delim = delim.substring(endPos+1,delim.length());
+		System.out.println("Delim is now: " + delim);
 		substring[1] = substring[1].replace(currentDelim, ",");
 	    }
 
