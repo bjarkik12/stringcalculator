@@ -28,7 +28,7 @@ public class Calculator {
 		System.out.println("temp is " + s);
 	    }
 	    int bracketCount = temp[1].length() - ( temp[1].replace("[","").length());
-	    temp[1] = escapeChars(temp[1]);
+	    //temp[1] = escapeChars(temp[1]);
 	    System.out.println("brackets are " + bracketCount);
 	    delim = temp[1];
 	    System.out.println("delim is: " + delim);	    
@@ -38,14 +38,20 @@ public class Calculator {
 	    for (int i=0; i<bracketCount; i++){
 		int endPos = delim.indexOf("]");
 		String currentDelim = delim.substring(1,endPos);
+		System.out.println("Current Delim: " + currentDelim);
 		tmpSubstring = tmpSubstring.substring(endPos+1,tmpSubstring.length());
 		substring[1] = substring[1].replace(currentDelim, ",");
 	    }
-	    System.out.println("Substring is now" + substring[1]);
+
 	    substring[1] = escapeChars(substring[1]);
-	    int total = 0;
-	    return sum(splitNumbers(substring[1],","));
+	    System.out.println("Substring is now" + substring[1]);
 	    
+	    if (bracketCount > 0){
+		return sum(splitNumbers(substring[1],","));
+	    }
+	    else{
+		return sum(splitNumbers(substring[1],delim));
+	    }
 	}	
     
 
@@ -73,8 +79,7 @@ public class Calculator {
     private static String escapeChars(String s){
 	for (String ill: illchars){
 	    if (s.contains(ill)){
-		s = s.replace(ill, ",");
-		//s = s.replace("//", "");	      
+		s = s.replace(ill, ",");	
 	  }
 	   
 	}

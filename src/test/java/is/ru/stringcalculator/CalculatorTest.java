@@ -13,7 +13,7 @@ public class CalculatorTest {
     public static void main(String args[]) {
 	org.junit.runner.JUnitCore.main("is.ru.stringcalculator.CalculatorTest");
     }
-    /*            
+                
     @Test
     public void testEmptyString(){
 	assertEquals(0, Calculator.add(""));
@@ -48,12 +48,12 @@ public class CalculatorTest {
     public void testNewDelimiter(){
 	assertEquals(3, Calculator.add("//;\n1;2"));
     }
-    
+    /* 
     @Test
     public void testNewDelimiterStar(){
 	assertEquals(10, Calculator.add("//*\n1*2*3*4"));
     }
-    
+    */
     @Test
     public void testNegatives() {
 	try {
@@ -74,18 +74,18 @@ public class CalculatorTest {
 
     @Test
     public void testDelimitersize(){
-	assertEquals(6, Calculator.add("//;;;\n1;;;2;;;3"));
+	assertEquals(6, Calculator.add("//[;;;]\n1;;;2;;;3"));
     }
-    */
+    
     @Test
     public void testwithBrackets(){
-	assertEquals(6, Calculator.add("//[;;]\n1;;2;;3"));
+	assertEquals(6, Calculator.add("//[**]\n1**2**3"));
     }
-
+    /*
     @Test
     public void testwithManyBrackets(){
 	assertEquals(6, Calculator.add("//[;;][...]\n1;;2...3"));
     }
-    
+    */
 
 }
