@@ -45,6 +45,9 @@ public class Calculator {
 	    if ( temp < 0){
 		negnumbers.add(number);
 	    }
+	    else if (temp > 1000){
+		//ignore numbers of this size
+	    }
 	    else{
 		total += temp;
 	    }

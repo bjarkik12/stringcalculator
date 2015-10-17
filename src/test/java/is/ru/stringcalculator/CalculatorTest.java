@@ -50,7 +50,7 @@ public class CalculatorTest {
     }
     
     @Test
-    public void testExpectedException3() {
+    public void testNegatives() {
 	try {
 	    Calculator.add("2,-4,3,-5,-6");
 	    fail("Exception expected.");
@@ -62,4 +62,8 @@ public class CalculatorTest {
     
     }
     
+    @Test
+    public void testLargeNumbers(){
+	assertEquals(2, Calculator.add("1001,2"));
+    }
 }
