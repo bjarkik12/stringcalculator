@@ -10,7 +10,6 @@ public class Calculator {
 	illchars.add("*");
 	illchars.add("-");
 	illchars.add("+");
-	System.out.println("Text is " + text);
 
 	if(text.equals("")){
 	    return 0;
@@ -19,32 +18,18 @@ public class Calculator {
 	else if( text.indexOf("//") == 0 ){
 	    String delim = ",";
 	    String[] substring = text.split("\n");
-	    for (String s : substring){
-		System.out.println("Substring is " + s);
-	    }
 	    String[] temp = substring[0].split("//");
-	    for (String s : temp){
-		System.out.println("temp is " + s);
-	    }
 	    int bracketCount = temp[1].length() - ( temp[1].replace("[","").length());
-
-	    System.out.println("brackets are " + bracketCount);
 	    delim = temp[1];
-	    System.out.println("delim is: " + delim);	    
-
-	    
 	    String tmpSubstring = substring[1];
 	    for (int i=0; i<bracketCount; i++){
 		int endPos = delim.indexOf("]");
 		String currentDelim = delim.substring(1,endPos);
-		System.out.println("CurrentDelim: " + currentDelim);
 		delim = delim.substring(endPos+1,delim.length());
-		System.out.println("Delim is now: " + delim);
 		substring[1] = substring[1].replace(currentDelim, ",");
 	    }
 
 	    substring[1] = escapeChars(substring[1]);
-	    System.out.println("Substring is now" + substring[1]);
 	    
 	    if (bracketCount > 0){
 		return sum(splitNumbers(substring[1],","));
@@ -54,7 +39,6 @@ public class Calculator {
 	    }
 	}	
     
-
 	else if(text.contains(",")){
 	    return sum(splitNumbers(text,defaultdelim));
 	}
@@ -70,9 +54,6 @@ public class Calculator {
 
     private static String[] splitNumbers(String numbers, String delim){
 	String[] temp = numbers.split(delim);
-	for (String s : temp){
-	    System.out.println("number in splitNumbers " + s);
-	}
 	return temp;
     }
 
