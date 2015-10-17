@@ -84,7 +84,7 @@ public class CalculatorTest {
 
     @Test
     public void testMultipleDelimitersAnySize(){
-	assertEquals(6, Calculator.add("//[**][%%%]\n1**2%%%3"));
+	assertEquals(10, Calculator.add("//[**][%%%][++++]\n1**2%%%3++++4"));
     }
 
 }
